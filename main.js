@@ -21,17 +21,12 @@ let formValidation = () => {
     }
 }
 
-// let data = {};
-
-// data["text"] = input.value;
-// console.log(data);
-
 let acceptedData = () => {
     post.innerHTML += `
     <div>
         <p>${input.value}</p>
         <span class="options">
-            <i class="fas fa-edit"></i>
+            <i onClick="editPost(this)" class="fas fa-edit"></i>
             <i onClick="deletePost(this)" class="fas fa-trash"></i>
         </span>
     </div>
@@ -40,5 +35,10 @@ let acceptedData = () => {
 }
 
 let deletePost = (e) =>{
+    e.parentElement.parentElement.remove();
+}
+
+let editPost = (e) => {
+    input.value = e.parentElement.previousElementSibling.innerHTML;
     e.parentElement.parentElement.remove();
 }
